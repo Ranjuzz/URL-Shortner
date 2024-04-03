@@ -5,10 +5,7 @@ import shortUrl from "./models/shorturls.js";
 
 env.config();
 
-mongoose.connect(process.env.DATABASE_URL, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true
-}).then(() => {
+mongoose.connect(process.env.DATABASE_URL).then(() => {
   console.log("Connected to MongoDB");
 }).catch((err) => {
   console.error("Error connecting to MongoDB:", err);
@@ -51,7 +48,7 @@ app.get('/:shortUrl', async (req, res) => {
   }
 });
 
-const PORT = process.env.PORT || 8080;
-app.listen(PORT, () => {
-  console.log(`Server is listening on port ${PORT}`);
+
+app.listen(process.env.PORT, () => {
+  console.log(`Server is listening on port ${process.env.PORT}`);
 });
